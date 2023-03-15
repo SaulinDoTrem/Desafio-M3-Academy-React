@@ -1,0 +1,263 @@
+.header-page {
+    background-color: $black;
+    position: relative;
+
+    .header-top {
+        padding: 22px 100px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid $primary-600;
+
+        @include mq(lg, max) {
+            padding: 25px 16px;
+            border: none;
+            display: grid;
+            grid-template-rows: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
+            grid-row-gap: 25px;
+        }
+
+        &__menu-button {
+            border: none;
+            background-color: transparent;
+            display: none;
+
+            @include mq(lg, max) {
+                display: block;
+            }
+        }
+
+        &__logo-wrapper {
+            width: 11%;
+            min-width: 136px;
+            max-width: 265px;
+
+            @include mq(lg, max) {
+                justify-self: center;
+            }
+        }
+
+        &__logo-image {
+            width: 100%;
+        }
+
+        .header-search-form {
+            position: relative;
+            width: 21%;
+
+            @include mq(lg, max) {
+                width: 100%;
+                grid-area: 2 / 1 / 2 / 4;
+            }
+
+            &__error-message {
+                display: none;
+            }
+
+            &__search-box {
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 16px;
+                padding: 8px 44px 8px 16px;
+                border: 2px solid $primary-700;
+                border-radius: 5px;
+                width: 100%;
+                max-width: -webkit-fill-available;
+                outline: 0;
+
+                @include mq(xl, min) {
+                    font-size: 28px;
+                    line-height: 33px;
+                }
+
+                &::placeholder {
+                    color: $primary-500;
+                }
+            }
+
+            &__search-button {
+                border: 0;
+                background-color: transparent;
+                position: absolute;
+                height: 18px;
+                width: 18px;
+                background-image: url("../../assets/icons/search-icon.svg");
+                background-size: contain;
+                background-repeat: no-repeat;
+                top: 50%;
+                z-index: map-get($z-index, level-2);
+                transform: translateY(-50%);
+                right: 16px;
+                cursor: pointer;
+
+                @include mq(xl, min) {
+                    width: 35px;
+                    height: 35px;
+                }
+            }
+        }
+
+        .header-login-area {
+            display: flex;
+
+            @include mq(lg, max) {
+                justify-self: flex-end;
+            }
+
+            &__login-button {
+                font-weight: 400;
+                font-size: 14px;
+                cursor: pointer;
+                line-height: 16px;
+                color: $white;
+                border: 0;
+                background-color: transparent;
+                margin-right: 55px;
+                transition: opacity 0.2s ease-in-out;
+
+                &.false {
+                    @include mq(lg, max) {
+                        opacity: 0;
+                        top: calc(100% + 31px);
+                        pointer-events: none;
+                    }
+                }
+
+                @include mq(lg, max) {
+                    position: absolute;
+                    top: 31px;
+                    left: 16px;
+                    z-index: map-get($z-index, level-3);
+                }
+
+                @include mq(xl, min) {
+                    font-size: 28px;
+                    line-height: 33px;
+                }
+            }
+
+            &__cart {
+                @include mq(xl, min) {
+                    width: 54px;
+                }
+            }
+        }
+    }
+
+    .header-bottom {
+        padding: 14px 100px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 16px;
+        color: $white;
+        transition: all 0.2s ease-in-out;
+
+        @include mq(lg, max) {
+            position: absolute;
+            z-index: map-get($z-index, level-2);
+            padding: 0;
+        }
+
+        @include mq(xl, min) {
+            font-size: 28px;
+            line-height: 33px;
+        }
+
+        &.false {
+            @include mq(lg, max) {
+                right: 100%;
+                opacity: 0;
+            }
+
+            * {
+                @include mq(lg, max) {
+                    pointer-events: none;
+                }
+            }
+
+            .header-bottom__content {
+                right: 100%;
+
+                .header-bottom__menu-button {
+                    pointer-events: none;
+                }
+            }
+
+            .header-bottom__overlay {
+                right: 100%;
+                opacity: 0;
+                pointer-events: none;
+            }
+        }
+
+        &__content {
+            @include mq(lg, max) {
+                position: fixed;
+                left: 0;
+                top: 0;
+                right: 36px;
+                z-index: map-get($z-index, level-2);
+                transition: all 0.2s ease-in-out;
+            }
+        }
+
+        &__overlay {
+            @include mq(lg, max) {
+                background: rgba(69, 69, 69, 0.7);
+                position: fixed;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                opacity: 1;
+                z-index: map-get($z-index, level-1);
+                transition: opacity 0.2s ease-in-out;
+            }
+        }
+
+        &__menu {
+            justify-content: flex-end;
+            background: $black;
+            padding: 31px 16px;
+            display: none;
+
+            @include mq(lg, max) {
+                display: flex;
+            }
+        }
+
+        &__menu-button {
+            border: none;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        &__item-list {
+            list-style-type: none;
+            display: flex;
+
+            @include mq(lg, max) {
+                background-color: $white;
+                flex-direction: column;
+                padding: 31px 16px;
+            }
+        }
+
+        &__item {
+            cursor: pointer;
+
+            @include mq(lg, max) {
+                color: $primary-600;
+            }
+
+            &:not(:last-of-type) {
+                margin-right: 55px;
+
+                @include mq(lg, max) {
+                    margin-bottom: 12px;
+                }
+            }
+        }
+    }
+}

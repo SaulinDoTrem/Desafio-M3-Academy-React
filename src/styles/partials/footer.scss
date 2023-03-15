@@ -1,0 +1,387 @@
+.footer-page {
+    position: relative;
+
+    .footer-top {
+        padding: 50px 100px 64px;
+        display: flex;
+        justify-content: space-between;
+
+        @include mq(lg, max) {
+            flex-direction: column;
+            padding: 24px 16px;
+        }
+
+        &__lists {
+            display: flex;
+            list-style-type: none;
+
+            @include mq(lg, max) {
+                position: relative;
+                flex-direction: column;
+            }
+        }
+
+        &__item-list {
+            &:not(:last-of-type) {
+                margin-right: 121px;
+
+                @include mq(lg, max) {
+                    margin: 0;
+                }
+            }
+
+            .footer-list {
+                &__title-area {
+                    @include mq(lg, max) {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                    }
+                }
+
+                &__title {
+                    font-weight: 500;
+                    font-size: 14px;
+                    line-height: 16px;
+                    color: $primary-200;
+                    margin-bottom: 12px;
+
+                    @include mq(xl, min) {
+                        font-size: 28px;
+                        line-height: 33px;
+                    }
+                }
+
+                &__toggle-button {
+                    display: none;
+
+                    @include mq(lg, max) {
+                        display: block;
+                        border: none;
+                        background-color: transparent;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        height: 8px;
+                        width: 8px;
+                        position: relative;
+                        transition: transform 0.2s ease-in-out;
+
+                        &.active {
+                            transform: rotate(135deg);
+                        }
+
+                        &::before,
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            width: 2px;
+                            height: 8px;
+                            background-color: $primary-200;
+                        }
+
+                        &::after {
+                            transform: rotate(90deg);
+                        }
+                    }
+                }
+
+                &__list {
+                    list-style-type: none;
+                    transition: all 0.2s ease-in-out;
+
+                    @include mq(lg, max) {
+                        height: 0;
+                        opacity: 0;
+                        pointer-events: none;
+
+                        &.active {
+                            height: 92px;
+                            opacity: 1;
+                            pointer-events: all;
+                            margin-bottom: 12px;
+                        }
+                    }
+                }
+
+                &__item,
+                &__item a {
+                    font-weight: 400;
+                    font-size: 12px;
+                    line-height: 14px;
+                    color: $primary-200;
+
+                    @include mq(xl, min) {
+                        font-size: 24px;
+                        line-height: 28px;
+                    }
+
+                    &.strong:nth-of-type(odd) {
+                        font-weight: 500;
+                    }
+
+                    &:not(:last-of-type) {
+                        margin-bottom: 12px;
+                    }
+                }
+            }
+        }
+
+        .social-media {
+            @include mq(lg, max) {
+                margin-top: 12px;
+            }
+
+            &__list {
+                list-style-type: none;
+                display: flex;
+                margin-bottom: 12px;
+
+                @include mq(lg, max) {
+                    margin-bottom: 0;
+                }
+            }
+
+            &__item {
+                height: 35px;
+                width: 35px;
+
+                @include mq(xl, min) {
+                    width: 70px;
+                    height: 70px;
+                }
+
+                &:not(:last-of-type) {
+                    margin-right: 10px;
+                }
+            }
+
+            &__icon {
+                height: 35px;
+                width: 35px;
+
+                @include mq(xl, min) {
+                    width: 70px;
+                    height: 70px;
+                }
+            }
+
+            &__social-link {
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 16px;
+                color: $primary-200;
+                text-decoration: none;
+
+                @include mq(lg, max) {
+                    display: none;
+                }
+
+                @include mq(xl, min) {
+                    font-size: 28px;
+                    line-height: 33px;
+                }
+            }
+        }
+
+        .util-buttons {
+            position: fixed;
+            right: 16px;
+            bottom: 190px;
+
+            @include mq(lg, max) {
+                bottom: 27px;
+                right: 17px;
+                z-index: map-get($z-index, level-1);
+            }
+
+            @include mq(xl, min) {
+                bottom: 229px;
+            }
+
+            &__whatsapp img {
+                @include mq(xl, min) {
+                    width: 66px;
+                    height: 66px;
+                }
+            }
+
+            &__return-top {
+                border: none;
+                background: $primary-600;
+                height: 34px;
+                width: 34px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 5px;
+                transition: opacity 0.2s ease-in-out;
+                opacity: 0;
+                pointer-events: none;
+
+                &.show {
+                    opacity: 1;
+                    pointer-events: all;
+                    cursor: pointer;
+                }
+
+                @include mq(xl, min) {
+                    width: 66px;
+                    height: 66px;
+                }
+
+                img {
+                    transform: translateX(-0.5px);
+
+                    @include mq(xl, min) {
+                        width: 24px;
+                        transform: translateX(0px);
+                    }
+                }
+            }
+        }
+    }
+
+    .footer-bottom {
+        padding: 15px 100px;
+        background-color: $black;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+
+        @include mq(lg, max) {
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 58px 15px 15px 16px;
+        }
+
+        &__text {
+            font-weight: 400;
+            font-size: 10px;
+            line-height: 12px;
+            color: $white;
+            max-width: 234px;
+
+            @include mq(xl, min) {
+                font-size: 20px;
+                line-height: 23px;
+                max-width: 467px;
+            }
+        }
+
+        .list-cards,
+        .list-credits,
+        .list-credits__figure {
+            display: flex;
+            list-style-type: none;
+            align-items: center;
+        }
+
+        .list-cards {
+            @include mq(lg, max) {
+                position: absolute;
+                top: 15px;
+                left: 16px;
+                right: 15px;
+            }
+
+            @include mq(lg, min) {
+                width: 32%;
+            }
+
+            @include mq(gg, min) {
+                width: auto;
+            }
+
+            &__item,
+            &__item-card {
+                &:not(:last-of-type) {
+                    margin-right: 12px;
+                }
+            }
+
+            &__item:last-of-type {
+                @include mq(sm, max) {
+                    width: 12%;
+                }
+
+                img {
+                    width: 100%;
+                    @include mq(lg, max) {
+                        max-width: 45px;
+                    }
+
+                    @include mq(xl, min) {
+                        width: 106px;
+                    }
+                }
+            }
+
+            &__item-card {
+                @include mq(sm, max) {
+                    width: 8%;
+                }
+
+                img {
+                    width: 100%;
+                    @include mq(lg, max) {
+                        max-width: 30px;
+                    }
+
+                    @include mq(xl, min) {
+                        width: 70px;
+                    }
+                }
+            }
+
+            &__divider {
+                width: 1px;
+                height: 24px;
+                background-color: $primary-600;
+            }
+        }
+
+        .list-credits {
+            @include mq(lg, max) {
+                margin-top: 15px;
+            }
+
+            &__item {
+                &:not(:last-of-type) {
+                    margin-right: 13px;
+                }
+
+                &:first-of-type img {
+                    @include mq(xl, min) {
+                        width: 84px;
+                    }
+                }
+
+                &:last-of-type img {
+                    @include mq(xl, min) {
+                        width: 55px;
+                    }
+                }
+            }
+
+            &__figure {
+                flex-direction: row-reverse;
+            }
+
+            &__text {
+                font-weight: 400;
+                font-size: 10px;
+                line-height: 12px;
+                color: $white;
+                margin-right: 13px;
+
+                @include mq(xl, min) {
+                    font-size: 20px;
+                    line-height: 23px;
+                }
+            }
+        }
+    }
+}
